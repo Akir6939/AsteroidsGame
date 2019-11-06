@@ -17,15 +17,6 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
   }
-  public void setX(double d){
-    myCenterX = d;
-  }   
-  public void setY(double d){
-    myCenterY = d;
-  }
-  public void stop(){
-    myPointDirection = Math.random()*360;
-  }
   public void turn (int nDegreesOfRotation)   
   {     
     //rotates the floater by a given number of degrees    

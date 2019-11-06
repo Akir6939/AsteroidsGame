@@ -17,5 +17,14 @@ class Spaceship extends Floater
 			ellipse((float)myCenterX,(float)myCenterY,i,i);
 		}
 	}
+  	public void setX(double d){
+    	myCenterX = d;
+  	}   
+  	public void setY(double d){
+    	myCenterY = d;
+  	}
+  	public void stop(){
+    	myPointDirection = Math.random()*360;
+  	}	
 
 }
