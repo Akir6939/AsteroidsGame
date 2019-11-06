@@ -15,12 +15,15 @@ public void keyPressed(){
 		s.turn(-10);
 	if(key=='d'||key=='D')
 		s.turn(10);
-	if(key=='w'||key=='W')
+	if(key=='w'||key=='W'){
 		s.accelerate(.25);
+		s.strobe();
+	}
 	if(key=='h'||key=='H'){
 		s.setX(Math.random()*450);
 		s.setY(Math.random()*450);
 		s.stop();
+		background(255);
 	}
 
 }
