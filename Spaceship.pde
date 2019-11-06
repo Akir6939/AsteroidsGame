@@ -25,6 +25,7 @@ class Spaceship extends Floater
   	}
   	public void stop(){
     	myPointDirection = Math.random()*360;
+    	myDirectionX = myDirectionY = Math.random()*2;
   	}	
 
 }
