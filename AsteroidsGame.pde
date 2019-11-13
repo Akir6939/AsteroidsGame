@@ -22,7 +22,7 @@ public void setup()
 	background(0);
 }
 public void colCheck(){
-	for(int i = 1;i<floaties.size();i++){
+	/*for(int i = 1;i<floaties.size();i++){
 		if(dist((float)s.getX(),(float)s.getY(),(float)floaties.get(i).getX(),(float)floaties.get(i).getY())<20){//floaties.get(i).getX(),floaties.get(i).getY())<20){
 			floaties.remove(i);
 			fill(255,0,0);
@@ -30,7 +30,11 @@ public void colCheck(){
 			ellipse((float)s.getX(),(float)s.getY(),50,50);
 		}
 
-	}
+	}*/
+	/*for(Floater f : floaties)
+		if(f instanceof Spaceship||f instanceof Bullet){
+			for(Asteroid a : floaties)
+		}*/
 }
 public void winCheck(){
 	if(floaties.size()==1){
@@ -41,6 +45,7 @@ public void winCheck(){
 		textSize(20);
 		text("You win!",200,250);
 		noLoop();
+		redraw();
 	}
 }
 public void keyPressed(){
@@ -52,6 +57,8 @@ public void keyPressed(){
 		s.accelerate(.25);
 		strobeVal = true;
 	}
+	if(key==' ')
+		floaties.add(new Bullet(s));
 	if(key=='h'||key=='H'){
 		s.setX(Math.random()*450);
 		s.setY(Math.random()*450);
@@ -78,4 +85,3 @@ public void draw()
   	if(strobeVal)
 		s.strobe();
 }
-
