@@ -21,6 +21,28 @@ public void setup()
 	size(500,500);
 	background(0);
 }
+public void colCheck(){
+	for(int i = 1;i<floaties.size();i++){
+		if(dist((float)s.getX(),(float)s.getY(),(float)floaties.get(i).getX(),(float)floaties.get(i).getY())<20){//floaties.get(i).getX(),floaties.get(i).getY())<20){
+			floaties.remove(i);
+			fill(255,0,0);
+			stroke(255,0,0);
+			ellipse((float)s.getX(),(float)s.getY(),50,50);
+		}
+
+	}
+}
+public void winCheck(){
+	if(floaties.size()==1){
+		floaties.remove(0);
+		cosmos.clear();
+		background(0);
+		fill(255,255,0);
+		textSize(20);
+		text("You win!",200,250);
+		noLoop();
+	}
+}
 public void keyPressed(){
 	if(key=='a'||key=='A')
 		s.turn(-10);
@@ -51,6 +73,8 @@ public void draw()
 		f.move();
 		f.show();
 	}
+	colCheck();
+	winCheck();
   	if(strobeVal)
 		s.strobe();
 }

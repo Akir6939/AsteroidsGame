@@ -46,7 +46,13 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     {     
       myCenterY = height;    
     }   
+  }
+  public double getX(){
+    return myCenterX;
   }   
+  public double getY(){
+    return myCenterY;
+  }
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColor);   
