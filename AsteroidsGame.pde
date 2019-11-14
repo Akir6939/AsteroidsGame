@@ -31,6 +31,7 @@ public void colCheck(){
 				stroke(255,0,0);
 				ellipse((float)b.getX(),(float)b.getY(),50,50);
 				floaties.remove(i);
+				b.removeThis();
 			}
 		}
 	}

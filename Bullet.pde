@@ -1,5 +1,7 @@
 class Bullet extends Floater{
+	private boolean toRemove;
 	public Bullet(Spaceship s){
+		toRemove = false;
 		myCenterX = s.getX();
 		myCenterY = s.getY();
 		myPointDirection = s.getDirection();
@@ -17,8 +19,11 @@ class Bullet extends Floater{
 		myCenterX+=myDirectionX;
 		myCenterY+=myDirectionY;
 	}
+	public void removeThis(){
+		toRemove = true;
+	}
 	public void removeSelf(ArrayList myList){
-		if(myCenterX>500||myCenterX<0||myCenterY>500||myCenterY<0){
+		if(myCenterX>500||myCenterX<0||myCenterY>500||myCenterY<0||toRemove){
 			myList.remove(this);
 		}
 	}
