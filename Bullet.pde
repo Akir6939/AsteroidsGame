@@ -17,4 +17,9 @@ class Bullet extends Floater{
 		myCenterX+=myDirectionX;
 		myCenterY+=myDirectionY;
 	}
+	public void removeSelf(ArrayList myList){
+		if(myCenterX>500||myCenterX<0||myCenterY>500||myCenterY<0){
+			myList.remove(this);
+		}
+	}
 }

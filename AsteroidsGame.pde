@@ -3,9 +3,11 @@ Asteroid a;
 boolean strobeVal;
 ArrayList<Star> cosmos;
 ArrayList<Floater> floaties;
+ArrayList<Bullet> shots;
 public void setup() 
 {
 	strobeVal = false;
+	shots = new ArrayList<Bullet>();
 	cosmos = new ArrayList<Star>();
 	for(int i = 0;i<50;i++){
 		cosmos.add(new Star((float)Math.random()*500,(float)Math.random()*500));
@@ -22,19 +24,33 @@ public void setup()
 	background(0);
 }
 public void colCheck(){
-	/*for(int i = 1;i<floaties.size();i++){
-		if(dist((float)s.getX(),(float)s.getY(),(float)floaties.get(i).getX(),(float)floaties.get(i).getY())<20){//floaties.get(i).getX(),floaties.get(i).getY())<20){
-			floaties.remove(i);
-			fill(255,0,0);
-			stroke(255,0,0);
-			ellipse((float)s.getX(),(float)s.getY(),50,50);
+	for(Bullet b : shots){
+		for(int i = 1;i<floaties.size();i++){
+			if(dist((float)b.getX(),(float)b.getY(),(float)floaties.get(i).getX(),(float)floaties.get(i).getY())<20){
+				fill(255,0,0);
+				stroke(255,0,0);
+				ellipse((float)b.getX(),(float)b.getY(),50,50);
+				floaties.remove(i);
+			}
 		}
-
-	}*/
-	/*for(Floater f : floaties)
-		if(f instanceof Spaceship||f instanceof Bullet){
-			for(Asteroid a : floaties)
-		}*/
+	}
+	for(int i = 0;i<shots.size();i++){
+		shots.get(i).removeSelf(shots);
+	}
+}
+public void loseCheck(){
+	for(int i = 1;i<floaties.size();i++){
+		if(dist((float)floaties.get(i).getX(),(float)floaties.get(i).getY(),(float)s.getX(),(float)s.getY())<20){
+			floaties.clear();
+			cosmos.clear();
+			shots.clear();
+			background(0);
+			textSize(20);
+			fill(255,255,0);
+			text("You lose!",200,250);
+			noLoop();
+		}
+	}
 }
 public void winCheck(){
 	if(floaties.size()==1){
@@ -45,7 +61,6 @@ public void winCheck(){
 		textSize(20);
 		text("You win!",200,250);
 		noLoop();
-		redraw();
 	}
 }
 public void keyPressed(){
@@ -57,8 +72,8 @@ public void keyPressed(){
 		s.accelerate(.25);
 		strobeVal = true;
 	}
-	if(key==' ')
-		floaties.add(new Bullet(s));
+	if(key==' '&&shots.size()<10)
+		shots.add(new Bullet(s));
 	if(key=='h'||key=='H'){
 		s.setX(Math.random()*450);
 		s.setY(Math.random()*450);
@@ -80,8 +95,13 @@ public void draw()
 		f.move();
 		f.show();
 	}
+	for(Bullet b : shots){
+		b.move();
+		b.show();
+	}
 	colCheck();
 	winCheck();
+	loseCheck();
   	if(strobeVal)
 		s.strobe();
 }
