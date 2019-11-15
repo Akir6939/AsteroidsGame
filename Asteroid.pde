@@ -1,6 +1,8 @@
-class Asteroid extends Floater{
+class Asteroid extends Floater
+{
 	private int rotSpeed;
-	public Asteroid(){
+	public Asteroid()
+	{
 		rotSpeed = (int)(Math.random()*16)-8;
 		corners = 4;
 		xCorners = new int[]{10,-10,-10,10};
@@ -11,11 +13,13 @@ class Asteroid extends Floater{
 		myDirectionX = Math.cos(myPointDirection*PI/180)*2;
 		myDirectionY = Math.sin(myPointDirection*PI/180)*2;
 	}
-	public void move(){
+	public void move()
+	{
 		turn(rotSpeed);
 		super.move();
 	}
-	public void place(){
+	public void place()
+	{
 		myCenterX = Math.random()*500;
 		myCenterY = Math.random()*500;
 	}

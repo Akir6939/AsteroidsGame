@@ -48,23 +48,31 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     }   
   }
   
-  //I added the getters, but that's all I did to Floater
-  public double getX(){
+  //I added the getters and setter, but that's all I did to Floater
+  public double getX()
+  {
     return myCenterX;
   }   
-  public double getY(){
+  public double getY()
+  {
     return myCenterY;
   }
-  public double getDirection(){
+  public double getDirection()
+  {
     return myPointDirection;
   }
-  public double getDirectionX(){
+  public double getDirectionX()
+  {
     return myDirectionX;
   }
-  public double getDirectionY(){
+  public double getDirectionY()
+  {
     return myDirectionY;
   }
-
+  public void setDirection(double d)
+  {
+    myPointDirection = d;
+  }
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColor);   
