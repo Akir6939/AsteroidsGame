@@ -136,7 +136,10 @@ public void draw()
 {
 	if(!gameOver) background(0);
 	for(Star p : cosmos)
+	{
+		p.pulse();
 		p.show();
+	}
 	for(Floater f : floaties)
 	{
 		f.move();
