@@ -1,12 +1,13 @@
 Spaceship s;
 Asteroid a;
-boolean strobeVal;
+boolean strobeVal,hopOn;
 ArrayList<Star> cosmos;
 ArrayList<Floater> floaties;
 ArrayList<Bullet> shots;
 boolean gameOver;
 public void setup() 
 {
+	hopOn = false;
 	strobeVal = false;
 	gameOver = false;
 	shots = new ArrayList<Bullet>();
@@ -105,17 +106,27 @@ public void winCheck()
 }
 public void keyPressed()
 {
+	if(keyCode==16)
+		hopOn = true;
 	if(key=='a'||key=='A')
 		s.turn(-10);
 	if(key=='d'||key=='D')
 		s.turn(10);
 	if((key=='w'||key=='W')&&!gameOver)
 	{
+		if(!hopOn)
+		{
 		s.accelerate(.25);
 		strobeVal = true;
+		}
+		else{
+			s.hop();
+		}
 	}
-	if((key==' '&&shots.size()<10)&&!gameOver)
+	if((key==' '&&shots.size()<10)&&!gameOver){
 		shots.add(new Bullet(s));
+		s.accelerate(-.1);
+	}
 	if((key=='q'||key=='Q')&&!gameOver)
 	{
 		s.setX(Math.random()*450);
@@ -130,6 +141,8 @@ public void keyReleased()
 {
 	if(key=='W'||key=='w')
 		strobeVal = false;
+	if(keyCode==16)
+		hopOn = false;
 }
 
 public void draw() 

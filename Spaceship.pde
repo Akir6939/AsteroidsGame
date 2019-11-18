@@ -10,6 +10,12 @@ class Spaceship extends Floater
     myCenterX = 0;
     myCenterY = 0;
 	}
+	public void hop(){
+		double dRadians = myPointDirection*PI/180;
+		myCenterX+=Math.cos(dRadians)*50;
+		myCenterY+=Math.sin(dRadians)*50;
+
+	}
 	public void strobe()
 	{
 		noFill();
